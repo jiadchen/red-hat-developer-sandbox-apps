@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  sample-app:
+    container_name: sample-app
+    build:
+      context: ../../apps/sample-app/
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+  sample-view:
+    container_name: sample-view
+    build:
+      context: ../../apps/sample-view/
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - API_BASE_URL=http://localhost:8080
+  test-reports:
+    container_name: test-reports
+    build:
+      context: ../../apps-for-test/test-reports/
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8080"
