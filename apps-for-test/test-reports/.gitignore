@@ -1,3 +1,11 @@
-public/e2e
-public/sample-app
-public/sample-view
+public/e2e/*
+public/sample-app/unit-test/*
+public/sample-app/integration-test/*
+public/sample-view/unit-test/*
+public/sample-view/storybook/*
+
+!public/e2e/.gitkeep
+!public/sample-app/unit-test/.gitkeep
+!public/sample-app/integration-test/.gitkeep
+!public/sample-view/unit-test/.gitkeep
+!public/sample-view/storybook/.gitkeep
