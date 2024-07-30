@@ -20,6 +20,6 @@ public class HelloControllerTest {
   public void sayHello_ShouldReturnHelloMessage() throws Exception {
     mockMvc.perform(get("/hello"))
         .andExpect(status().isOk())
-        .andExpect(content().string("Hello, openshift! version:1.0.38"));
+        .andExpect(content().string("Hello, openshift! version:1.0.39"));
   }
 }
