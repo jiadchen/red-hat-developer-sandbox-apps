@@ -21,7 +21,7 @@ public class SampleAppTest {
   @Test
   public void sayHelloTest() {
     // Arrange
-    String expected = "Hello, openshift! version:1.0.43";
+    String expected = "Hello, openshift! version:1.0.44";
     int expectedStatusCode = 200;
 
     // Act
