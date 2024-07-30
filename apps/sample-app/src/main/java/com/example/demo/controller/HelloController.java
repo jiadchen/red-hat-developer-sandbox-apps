@@ -8,6 +8,6 @@ public class HelloController {
 
   @GetMapping("/hello")
   public String sayHello() {
-    return "Hello, openshift! version:1.0.44";
+    return "Hello, openshift! version:1.0.45";
   }
 }
