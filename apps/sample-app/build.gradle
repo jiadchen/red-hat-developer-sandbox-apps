@@ -1,6 +1,8 @@
 plugins {
     id 'java'
     id 'io.quarkus'
+    id 'org.sonarqube' version '5.1.0.4882'
+    id 'jacoco'
 }
 
 repositories {
@@ -26,6 +28,7 @@ java {
 }
 
 test {
+    useJUnitPlatform()
     systemProperty "java.util.logging.manager", "org.jboss.logmanager.LogManager"
 }
 compileJava {
@@ -35,4 +38,24 @@ compileJava {
 
 compileTestJava {
     options.encoding = 'UTF-8'
+}
+
+jacocoTestReport {
+	dependsOn test // tests are required to run before generating the report
+	reports {
+		xml.required = true
+		csv.required = false
+		html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+	}
+}
+
+sonar {
+	properties {
+		property "sonar.projectKey", "sample-app"
+    property "sonar.projectName", "sample-app"
+    property "sonar.host.url", "http://sonarqube.sonarqube.svc.cluster.local:9000"
+		// property "sonar.host.url", "https://sonarqube-sonarqube.apps.rosa-pwb5w.ms9h.p1.openshiftapps.com"
+		property "sonar.login", "sqa_d0c603082fff1c979221bd84a6b9e3ef269349d6"
+		property "sonar.junit.reportPaths", "build/test-results/test"
+	}
 }
