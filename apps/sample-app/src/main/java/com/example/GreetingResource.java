@@ -11,6 +11,6 @@ public class GreetingResource {
   @GET
   @Produces(MediaType.TEXT_PLAIN)
   public String hello() {
-    return "Hello, openshift! version:1.0.47";
+    return "Hello, openshift! version:1.0.48";
   }
 }

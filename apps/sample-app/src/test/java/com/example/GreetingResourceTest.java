@@ -14,7 +14,7 @@ class GreetingResourceTest {
         .when().get("/hello")
         .then()
         .statusCode(200)
-        .body(is("Hello, openshift! version:1.0.47"));
+        .body(is("Hello, openshift! version:1.0.48"));
   }
 
 }
