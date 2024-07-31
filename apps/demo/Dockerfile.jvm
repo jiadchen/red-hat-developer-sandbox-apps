@@ -77,16 +77,30 @@
 #   accessed directly. (example: "foo.example.com,bar.example.com")
 #
 ###
+FROM eclipse-temurin:17 AS builder
+
+WORKDIR /workspace
+
+COPY ./gradlew .
+COPY ./gradle.properties .
+COPY ./gradle gradle
+COPY ./build.gradle .
+COPY ./settings.gradle .
+COPY ./src src
+
+RUN ./gradlew build --no-daemon -x test
+
+
 FROM registry.access.redhat.com/ubi8/openjdk-17:1.19
 
 ENV LANGUAGE='en_US:en'
 
 
 # We make four distinct layers so if there are application changes the library layers can be re-used
-COPY --chown=185 build/quarkus-app/lib/ /deployments/lib/
-COPY --chown=185 build/quarkus-app/*.jar /deployments/
-COPY --chown=185 build/quarkus-app/app/ /deployments/app/
-COPY --chown=185 build/quarkus-app/quarkus/ /deployments/quarkus/
+COPY --from=builder --chown=185 /workspace/build/quarkus-app/lib/ /deployments/lib/
+COPY --from=builder --chown=185 /workspace/build/quarkus-app/*.jar /deployments/
+COPY --from=builder --chown=185 /workspace/build/quarkus-app/app/ /deployments/app/
+COPY --from=builder --chown=185 /workspace/build/quarkus-app/quarkus/ /deployments/quarkus/
 
 EXPOSE 8080
 USER 185
