@@ -1,5 +1,5 @@
 #!/bin/sh
-WAIT_TIME=20 # 待機時間を20秒に設定
+WAIT_TIME=300 # 待機時間を300秒に設定
 
 # npm run storybookをバックグラウンドで実行し、標準出力をstorybook.logにリダイレクト
 npm run storybook -- --ci | tee ./storybook.log &
