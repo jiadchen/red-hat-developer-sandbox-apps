@@ -55,7 +55,7 @@ sonar {
     property "sonar.projectName", "sample-app"
     property "sonar.host.url", "http://sonarqube.rhn-support-jiadchen-dev.svc.cluster.local:9000"
 		// property "sonar.host.url", "https://sonarqube-sonarqube.apps.rosa-pwb5w.ms9h.p1.openshiftapps.com"
-		property "sonar.login", "sqa_884e761d290158da5cb513e9e7a2e625ea224dd2"
+		property "sonar.login", "sqa_2b4cacc528962d1bf9f3ec1f64a843fec247266a"
 		property "sonar.junit.reportPaths", "build/test-results/test"
 	}
 }
