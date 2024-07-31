@@ -13,7 +13,7 @@ test("環境変数が画面に表示されている", async ({ page }) => {
 
 test("ボタンをクリックしてメッセージが表示される", async ({ page }) => {
   // Arrange
-  const expected = "Hello, openshift! version:1.0.45";
+  const expected = "Hello, openshift! version:1.0.46";
 
   // Act
   await page.goto(`${process.env.TEST_PAGE_URL}/hello`);
